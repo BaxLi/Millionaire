@@ -1,0 +1,40 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<header id="home" class="header">
+    <nav class="site-nav text-uppercase navbar navbar-expand-md navbar-dark" role="navigation">
+        <div class="container-fluid h1">
+            <div class="navbar-brand col-1">
+                <a href="home"><img class="img-fluid" src="images/Millionairelogo.png" alt="Logo - Millionaire"></a>
+                <p> <%=(String) session.getAttribute("isAdmin")%></p>
+            </div>
+            <!-- branding -->
+            <ul class="navbar-nav">
+                <li><a class="nav-item nav-link"  href="home">home</a></li>
+
+                <% if (session.getAttribute("username") != null) {%>
+                <li><a class="nav-item nav-link" href="<%=response.encodeURL("getHistory")%>">history</a></li>
+                    <%}%>
+
+                <% if (session.getAttribute("username") == null) {%>
+                <li><a class="nav-item nav-link text-success" href="login">logIN - ${username}</a></li>
+                    <%} else {%>
+                <li><a class="nav-item nav-link" href="logout">logOUT-${username}</a></li>
+                    <%}%>
+                
+                <li><a class="nav-item nav-link"  href='<%=response.encodeURL("getProfileDetails")%>'>view my profile</a></li>
+
+                <% if (session.getAttribute("isAdmin")!=null) {%> 
+                <li> <a class="nav-item nav-link"  href='addQuestionToDB'>add question</a> </li>
+                <%}%>
+
+                <li><a class="nav-item nav-link"  href="#search">search</a></li>
+                <li><a class="nav-item nav-link"  href="register">new user?</a></li>
+                <li><a class="nav-item nav-link"  href="redirect">linkedIn</a></li>
+            </ul>
+            <!-- navbar -->
+        </div>
+        <!-- container nav-elements -->
+    </nav>
+</header>
