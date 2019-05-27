@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.test.beans.Order;
-import com.test.beans.Product;
 import com.test.beans.Question;
 import com.test.beans.User;
 import java.text.SimpleDateFormat;
@@ -50,32 +48,16 @@ public class ApplicationDao {
         return executed;
     }
 
-    public List<Product> searchQuestions(String searchString, Connection connection) {
-        Product product = null;
-        List<Product> products = new ArrayList<>();
-        // Connection connection = DBConnection.getConnectionToDatabase();
-        try {
+    public List<Question> searchQuestions() {
 
-            String sql = "select * from products where product_name like '%" + searchString + "%'";
-
-            Statement statement = connection.createStatement();
-
-            ResultSet set = statement.executeQuery(sql);
-
-            while (set.next()) {
-                product = new Product();
-                product.setProductId(set.getInt("product_id"));
-                product.setProductImgPath(set.getString("image_path"));
-                product.setProductName(set.getString("product_name"));
-                products.add(product);
-
+        List<Question> questionsList = new ArrayList<>();
+// let create an array with 10 questions from DM with different difficulty level 
+            for (int i = 1; i < 10; i++) {
             }
-
-        } catch (SQLException exception) {
-            exception.printStackTrace();
+            return questionsList;
         }
-        return products;
-    }
+
+    
 
     public int registerUser(User user) {
         int rowsAffected = 0;

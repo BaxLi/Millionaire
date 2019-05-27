@@ -19,7 +19,7 @@
             <session-timeout>60</session-timeout>
 	</session-config>
 	
-<!--	<filter>
+	<filter>
 	<filter-name>AuthenticationFilter</filter-name>
 	<filter-class>com.test.filters.AuthenticationFilter</filter-class>
 	</filter>
@@ -28,7 +28,7 @@
 	<url-pattern>/*</url-pattern>	
 	</filter-mapping>
 	
-	<listener>
+<!--	<listener>
 	<listener-class>com.test.listeners.ApplicationListener</listener-class>
 	</listener>-->
 </web-app>

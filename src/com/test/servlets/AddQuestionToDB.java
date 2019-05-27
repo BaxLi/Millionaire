@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.test.beans.Product;
 import com.test.beans.Question;
 import com.test.dao.ApplicationDao;
 

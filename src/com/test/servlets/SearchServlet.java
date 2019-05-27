@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.test.beans.Product;
 import com.test.dao.ApplicationDao;
 
 
@@ -29,13 +28,13 @@ public class SearchServlet extends HttpServlet{
 		Connection connection = (Connection)getServletContext().getAttribute("dbconnection");
 		req.getSession().setAttribute("search", searchString);
 		//call DAO layer and get all questions for search criteria
-		ApplicationDao dao = new ApplicationDao();
-		List<Product> products = dao.searchQuestions(searchString,connection);
+//		ApplicationDao dao = new ApplicationDao();
+//		List<Product> products = dao.searchQuestions(searchString,connection);
 		
 		//write the products data back to the client browser
 		/*String page = getHTMLString(req.getServletContext().getRealPath("/html/searchResults.html"), products);
 		resp.getWriter().write(page);*/
-		req.setAttribute("products", products);
+//		req.setAttribute("products", products);
 		req.getRequestDispatcher("/html/searchResults.jsp").forward(req, resp);
 		
 		
@@ -50,24 +49,24 @@ public class SearchServlet extends HttpServlet{
 	 * @throws IOException
 	 */
 	
-	public String getHTMLString(String filePath, List<Product> products) throws IOException{
-		BufferedReader reader = new BufferedReader(new FileReader(filePath));
-		String line="";
-		StringBuffer buffer = new StringBuffer();
-		while((line=reader.readLine())!=null){
-			buffer.append(line);
-		}
-		
-		reader.close();
-		String page = buffer.toString();
-		
-		page = MessageFormat.format(page, products.get(0).getProductImgPath(),
-				products.get(1).getProductImgPath(),products.get(2).getProductImgPath(),
-				products.get(0).getProductName(),products.get(1).getProductName(),
-				products.get(2).getProductName(),0);
-		
-		return page;
-		
-		
-	}
+//	public String getHTMLString(String filePath, List<Product> products) throws IOException{
+//		BufferedReader reader = new BufferedReader(new FileReader(filePath));
+//		String line="";
+//		StringBuffer buffer = new StringBuffer();
+//		while((line=reader.readLine())!=null){
+//			buffer.append(line);
+//		}
+//		
+//		reader.close();
+//		String page = buffer.toString();
+//		
+//		page = MessageFormat.format(page, products.get(0).getProductImgPath(),
+//				products.get(1).getProductImgPath(),products.get(2).getProductImgPath(),
+//				products.get(0).getProductName(),products.get(1).getProductName(),
+//				products.get(2).getProductName(),0);
+//		
+//		return page;
+//		
+//		
+//	}
 }

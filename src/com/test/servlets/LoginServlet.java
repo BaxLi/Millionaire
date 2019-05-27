@@ -1,5 +1,6 @@
 package com.test.servlets;
 
+import com.test.beans.CurrentGame;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -41,12 +42,19 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = req.getSession();
             //set the username as an attribute
             session.setAttribute("username", username);
+            
             if (username.equals("Bax")) {
                 session.setAttribute("isAdmin", "true");
             }
+            
+            if (session.getAttribute("currentGame") == null) {
+                CurrentGame currentGame = new CurrentGame(username);
+                
+                session.setAttribute("currentGame", currentGame);
+            }
+
 //put logged timestamp in DB Table usersactivity
 //            dao.setUserJustLogged(username);
-
             //forward to home jsp
             req.getRequestDispatcher("/html/home.jsp").forward(req, resp);
 

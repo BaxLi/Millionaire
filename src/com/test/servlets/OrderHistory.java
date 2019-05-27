@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.test.beans.Order;
+//import com.test.beans.Order;
 import com.test.dao.ApplicationDao;
 
 @WebServlet("/orderHistory")
@@ -23,11 +23,11 @@ public class OrderHistory extends HttpServlet {
 
 		// call dao and get order history
 		ApplicationDao dao = new ApplicationDao();
-		List<Order> orders = null;
+//		List<Order> orders = null;
 //                        dao.getOrders(username);
 
 		// set order data in request
-		request.setAttribute("orders", orders);
+//		request.setAttribute("orders", orders);
 
 		// forward to home jsp
 		request.getRequestDispatcher("/html/home.jsp").forward(request, response);

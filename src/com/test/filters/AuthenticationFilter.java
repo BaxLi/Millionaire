@@ -23,12 +23,14 @@ public class AuthenticationFilter implements Filter {
             throws IOException, ServletException {
         //pre-processing
         HttpServletRequest request = (HttpServletRequest) req;
-        if (request.getRequestURI().startsWith("/Millionaire/login")) 
-            { 
-                HttpSession session = request.getSession();
-                    if (session.getAttribute("username") == null) {
-                            request.getRequestDispatcher("/html/login.jsp").forward(request, resp);
-                        }
+        if (request.getRequestURI().startsWith("/Millionaire/login")) {
+            HttpSession session = request.getSession();
+            if (session.getAttribute("username") == null) {
+                request.getRequestDispatcher("/html/login.jsp").forward(request, resp);
+            }
+        }
+        if (request.getRequestURI().startsWith("/Millionaire/answerPage")) {
+            System.out.println("YSE");
         }
         filter.doFilter(request, resp);
         //post-processing
